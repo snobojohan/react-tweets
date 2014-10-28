@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 app.disable('etag');
 
 // Connect to our mongo database
-mongoose.connect('mongodb://localhost/react-tweets');
+mongoose.connect('mongodb://localhost/reacttweets');
 
 // Create a new ntwitter instance
 var twit = new twitter(config.twitter);
@@ -43,6 +43,6 @@ var server = http.createServer(app).listen(port, function() {
 var io = require('socket.io').listen(server);
 
 // Set a stream listener for tweets matching tracking keywords
-twit.stream('statuses/filter',{ track: 'javascript'}, function(stream){
+twit.stream('statuses/filter',{ track: '#leanux,lean ux,agile ux'}, function(stream){
   streamHandler(stream,io);
 });
